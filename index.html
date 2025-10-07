@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krish Miyani | Data Science Student & Java Projects Portfolio</title>
+    <meta name="description" content="3rd-semester Engineering Portfolio of Krish Miyani, featuring projects in Java, Data Structures, DBMS, and freelance design work.">
+    <link rel="canonical" href="[Your_Website_URL]/Main-page/index.html" /> 
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="selector-view"> 
+    <div id="welcome-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Welcome to Krish's Portfolio!</h2>
+            <p>I'm glad you stopped by. Please select your area of interest to continue.</p>
+            <button id="close-modal-btn">Enter Site</button>
+        </div>
+    </div>
+
+    <div id="profile-selector" class="modal-overlay hidden-screen">
+        <div class="selector-content">
+            <h1>Who is this page for?</h1>
+            <div class="profile-grid">
+                <a href="#" class="profile-link" data-role="HR">
+                    <div class="profile-icon icon-hr">HR</div>
+                    <span class="profile-name">HR/Recruiter</span>
+                </a>
+                <a href="#" class="profile-link" data-role="Manager">
+                    <div class="profile-icon icon-manager">MGR</div>
+                    <span class="profile-name">Hiring Manager</span>
+                </a>
+                <a href="#" class="profile-link" data-role="Developer">
+                    <div class="profile-icon icon-dev">DEV</div>
+                    <span class="profile-name">Developer/Peer</span>
+                </a>
+            </div>
+            <button id="manage-profiles-btn">Contact Me Directly</button>
+        </div>
+    </div>
+    
+    <header class="main-header">
+        <div class="logo">Krish Miyani <span class="editor-tag">Data Science Student</span></div>
+        <nav class="top-nav">
+            <a href="#" id="switch-profile-link">Switch Profile</a>
+            <a href="resume.html" id="top-resume-link" class="active-section">Resume</a>
+            <a href="projects.html" id="top-projects-link">Projects</a>
+            <a href="contact.html" id="top-contact-link">Contact</a>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+    <div class="main-profile-box">
+        <div class="profile-area">
+            <div class="profile-circle">
+                <img src="WhatsApp Image 2025-10-03 at 00.17.18_6f6f609e.jpg" alt="Krish Miyani Profile Picture" loading="lazy">
+            </div>
+        </div>
+
+        <div class="intro-area">
+            <h1>Krish S Miyani</h1>
+            <p class="about-me-text" id="personalization-target">
+                <span class="bold-text">A Bit About Me</span><br>
+                I’m Krish, a 3rd-semester engineering student passionate about Java, Data Structures, and DBMS. I
+                love building projects that solve real problems—like my GreenSaarthi app and a Hospital Management
+                System. Alongside tech, I also explore freelance design work to bring creative ideas to life. My
+                goal is to grow into a data science professional while building impactful tech products.
+            </p>
+        </div>
+    </div>
+
+    <section class="content-row">
+        <h2>My Sections</h2>
+        <div class="circle-buttons">
+            <a href="resume.html" id="circle-resume" class="circle orange-circle">Resume</a>
+            <a href="projects.html" id="circle-projects" class="circle red-circle">Projects</a>
+            <a href="contact.html" id="circle-contact" class="circle blue-circle">Contact</a>
+        </div>
+    </section>
+</main>
+
+    <footer class="main-footer">
+        <div class="footer-info">
+            <div class="contact-item">
+                <span class="label">Phone</span>
+                <p>6353301501</p>
+            </div>
+            <div class="contact-item">
+                <span class="label">Email</span>
+                <p>Krishmiyani31@gmail.com</p>
+            </div>
+            <div class="contact-item follow-me">
+                <span class="label">Follow Me</span>
+                <div class="social-buttons-container">
+                    <a href="https://www.linkedin.com/in/krish-miyani-2201-1613-" id="social-button-linkedin"
+                        class="social-button linkedin" aria-label="LinkedIn">in</a>
+                    <a href="#" id="social-button-github" class="social-button github" aria-label="GitHub">Git</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 By Krish Miyani<br>
+            </div>
+    </footer>
+
+    <script src="scripte.js"></script>
+</body>
+
+</html>

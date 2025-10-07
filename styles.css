@@ -1,0 +1,505 @@
+:root {
+    /* --- UPDATED DARK MODE PALETTE --- */
+    --primary-bg: #141414; /* Netflix Black */
+    --footer-bg: #1e1e1e;
+    --text-color: #f0f0f0; 
+    --secondary-text-color: #b0b0b0; 
+
+    /* Accent Colors (Brighter for dark mode contrast) */
+    --orange-color: #e50914; /* Deep Red/Orange (Netflix main accent) */
+    --red-color: #b81f3d; 
+    --blue-color: #2777ae; 
+    
+    --transition-speed: 0.3s;
+}
+
+/* Basic Reset and Typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--primary-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-speed);
+}
+
+/* ------------------------------------ */
+/* UTILITY & GLOBAL STYLES */
+/* ------------------------------------ */
+
+.hidden-screen {
+    display: none !important;
+}
+
+/* Rule to hide main content when selector/modal is active */
+body.content-hidden > :not(#profile-selector):not(#welcome-modal) {
+    display: none;
+}
+
+/* Background for Selector/Welcome Views */
+body#selector-view {
+    background-image: url('bg-welcome.jpg'); /* Assume bg-welcome.jpg is in Main-page folder */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+
+/* ------------------------------------ */
+/* HEADER/NAV STYLES (Minimalist) */
+/* ------------------------------------ */
+
+.main-header {
+    position: fixed; /* Stick to the top like Netflix */
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(20, 20, 20, 0.9); /* Slight transparency */
+    z-index: 50;
+    transition: background-color var(--transition-speed);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.6em;
+    color: var(--orange-color); /* Use the red accent for the name */
+}
+
+.editor-tag {
+    font-weight: normal;
+    font-size: 0.8em;
+    opacity: 0.7;
+    color: var(--secondary-text-color);
+}
+
+.top-nav a {
+    margin-left: 25px;
+    font-size: 1em;
+    color: var(--secondary-text-color);
+}
+
+.top-nav a:hover {
+    color: var(--text-color);
+}
+
+/* CORRECTED: Line indicator for active section */
+.active-section {
+    color: var(--text-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--orange-color); 
+    padding-bottom: 3px; 
+}
+.active-section:after {
+    content: none; /* Remove the old dot indicator */
+}
+
+#switch-profile-link {
+    color: var(--secondary-text-color);
+    font-size: 0.9em;
+    margin-right: 35px;
+    padding: 5px 10px;
+    border: 1px solid var(--secondary-text-color);
+    border-radius: 4px;
+}
+#switch-profile-link:hover {
+    color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+
+/* ------------------------------------ */
+/* HERO SECTION (Featured Content Area) */
+/* ------------------------------------ */
+
+.hero-section {
+    flex-grow: 1;
+    padding-top: 100px; /* Space for the fixed header */
+}
+
+.main-profile-box {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 90%;
+    margin: 0 auto 80px; /* Center and add margin below */
+    padding: 30px;
+}
+
+/* Profile Picture - Now a featured box */
+.profile-area {
+    width: 30%;
+    max-width: 300px; 
+}
+
+.profile-circle {
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 4px; /* Slightly rounded edges like content tiles */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.profile-circle img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(10%) brightness(120%); 
+}
+
+/* Intro Text */
+.intro-area {
+    width: 70%;
+}
+
+.intro-area h1 {
+    font-size: 4em;
+    margin-bottom: 5px;
+}
+
+.about-me-text {
+    line-height: 1.6;
+    max-width: 700px;
+    color: var(--secondary-text-color);
+}
+
+.bold-text {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-size: 1.2em;
+}
+
+/* ------------------------------------ */
+/* NETFLIX-STYLE CONTENT ROW */
+/* ------------------------------------ */
+
+.content-row {
+    margin-bottom: 50px;
+    padding-left: 50px;
+}
+
+.content-row h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.circle-buttons {
+    display: flex;
+    gap: 15px;
+    /* Simulate horizontal scroll row */
+    overflow-x: auto; 
+    padding-bottom: 20px;
+}
+
+/* Circle Styles -> TRANSFORMED INTO TILES */
+.circle {
+    min-width: 250px;
+    height: 140px;
+    border-radius: 4px; 
+    color: white; 
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s, box-shadow 0.3s;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* DRAMATIC NETFLIX HOVER EFFECT */
+.circle:hover {
+    transform: scale(1.15); /* Zoom out significantly */
+    z-index: 10; /* Bring to front */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
+}
+
+.orange-circle {
+    background-color: var(--orange-color);
+}
+
+.red-circle {
+    background-color: var(--red-color);
+}
+
+.blue-circle {
+    background-color: var(--blue-color);
+}
+
+/* ------------------------------------ */
+/* FOOTER STYLES (Minimalist) */
+/* ------------------------------------ */
+
+.main-footer {
+    background-color: var(--footer-bg);
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-top: 1px solid #333; 
+    font-size: 0.9em;
+}
+
+.footer-info {
+    display: flex;
+    gap: 80px;
+}
+
+.contact-item {
+    line-height: 1.5;
+}
+
+.contact-item .label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--secondary-text-color);
+}
+
+.contact-item p {
+    color: var(--text-color);
+}
+
+.social-buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.social-button {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    color: var(--primary-bg);
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s, color 0.3s;
+}
+
+.social-button:hover {
+    transform: scale(1.1);
+}
+
+/* Specific styling for LinkedIn */
+.social-button.linkedin {
+    background-color: #0077B5; 
+    border: 2px solid #0077B5;
+    color: white;
+}
+.social-button.linkedin:hover {
+    background-color: transparent;
+    color: #0077B5;
+}
+
+/* Specific styling for GitHub */
+.social-button.github {
+    background-color: #f0f0f0; 
+    border: 2px solid #f0f0f0;
+    color: #1e1e1e; 
+}
+.social-button.github:hover {
+    background-color: transparent;
+    color: #f0f0f0; 
+}
+
+.copyright {
+    text-align: right;
+    line-height: 1.5;
+    color: var(--secondary-text-color);
+}
+
+/* ------------------------------------ */
+/* WELCOME MODAL & PROFILE SELECTOR STYLES */
+/* ------------------------------------ */
+
+.modal-overlay {
+    /* Set dimensions for the overlay */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2000;
+    opacity: 1; 
+    transition: opacity 0.3s;
+    
+    /* FIX: Semi-transparent black overlay for background image readability */
+    background-color: rgba(0, 0, 0, 0.85); 
+
+    /* Center the content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- WELCOME MODAL STYLES --- */
+#welcome-modal .modal-content {
+    background-color: transparent; 
+    padding: 60px 80px;
+    text-align: center;
+    max-width: 90%;
+    transform: scale(1); 
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-in-out;
+    color: white; 
+}
+
+#welcome-modal.hidden {
+    opacity: 0;
+}
+
+#welcome-modal.hidden .modal-content {
+    transform: scale(1.1); 
+    opacity: 0; 
+}
+
+#welcome-modal h2 {
+    color: var(--orange-color); 
+    margin-bottom: 10px;
+    font-size: 4em;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#welcome-modal p {
+    margin-bottom: 35px;
+    font-size: 1.4em;
+    color: #ccc;
+    font-style: italic;
+}
+
+#close-modal-btn {
+    background-color: var(--orange-color); 
+    color: white;
+    border: 2px solid var(--orange-color);
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#close-modal-btn:hover {
+    background-color: transparent;
+    transform: scale(1.05);
+}
+
+
+/* --- PROFILE SELECTOR STYLES --- */
+
+.selector-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 50px;
+    font-weight: 300; 
+}
+
+.profile-grid {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.profile-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.3s, transform 0.3s;
+    text-align: center;
+    color: var(--secondary-text-color);
+}
+
+.profile-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px; 
+    /* FIX: Set default background to primary black */
+    background-color: var(--primary-bg); 
+    color: white; 
+    font-size: 2.5em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid transparent;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+/* Final Aesthetic Improvement: Colored Shadows/Backgrounds */
+.profile-link[data-role="HR"] .profile-icon {
+    /* background-color: rgba(229, 9, 20, 0.2); <-- Remove/Comment this line */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.profile-link[data-role="Manager"] .profile-icon {
+    /* background-color: rgba(255, 153, 0, 0.2); <-- Remove/Comment this line */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.profile-link[data-role="Developer"] .profile-icon {
+    /* background-color: rgba(39, 119, 174, 0.2); <-- Remove/Comment this line */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.profile-link[data-role="HR"]:hover .profile-icon {
+    background-color: rgb(239, 63, 55); 
+    color: rgb(0, 0, 0); /* Change text color to black for contrast */
+    box-shadow: 0 0 30px rgb(239, 63, 55); /* Match border color */
+}
+.profile-link[data-role="Manager"]:hover .profile-icon {
+    background-color: rgb(72, 82, 184); 
+    color: rgb(0, 0, 0); /* Change text color to black for contrast */
+    box-shadow: 0 0 30px rgb(70, 82, 184    ); /* Match border color */
+}
+.profile-link[data-role="Developer"]:hover .profile-icon {
+    background-color: rgb(251, 175, 65); 
+    color: rgb(0, 0, 0); /* Change text color to black for contrast */
+    box-shadow: 0 0 30px rgb(251, 175, 65); /* Match border color */
+}
+
+.profile-name {
+    font-size: 1.2em;
+}
+
+#manage-profiles-btn {
+    background: transparent;
+    color: var(--secondary-text-color);
+    border: 1px solid var(--secondary-text-color);
+    padding: 8px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#manage-profiles-btn:hover {
+    color: white;
+    border-color: white;
+}
